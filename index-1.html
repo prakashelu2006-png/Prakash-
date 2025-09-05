@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designer Digital Portfolio</title>
+  <style>
+    /* Reset some defaults */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      color: #222;
+      background: #f7f8fa;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(90deg, #2b5876 0%, #4e4376 100%);
+      color: #fff;
+      padding: 40px 0 30px 0;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(46,49,49,0.08);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #e2e2e2;
+      margin-bottom: 5px;
+    }
+
+    nav {
+      margin-top: 15px;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 18px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #ffc371;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+
+    section {
+      margin-bottom: 48px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #2b5876;
+      margin-bottom: 16px;
+      border-bottom: 2px solid #eee;
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .about-img {
+      flex: 1 1 160px;
+      max-width: 160px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .about-text {
+      flex: 2 1 320px;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 26px;
+    }
+
+    .portfolio-item {
+      background: #fff;
+      border-radius: 11px;
+      box-shadow: 0 2px 12px rgba(46,49,49,0.06);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 6px 22px rgba(46,49,49,0.11);
+    }
+
+    .portfolio-image {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      background: #eee;
+    }
+
+    .portfolio-content {
+      padding: 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .portfolio-title {
+      font-size: 1.18rem;
+      font-weight: 600;
+      color: #4e4376;
+      margin-bottom: 6px;
+    }
+
+    .portfolio-desc {
+      font-size: 0.97rem;
+      color: #575757;
+      margin-bottom: 8px;
+      flex: 1;
+    }
+
+    .portfolio-link {
+      color: #2b5876;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-top: 5px;
+      transition: color 0.2s;
+      align-self: flex-start;
+    }
+
+    .portfolio-link:hover {
+      color: #ffc371;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .skill-tag {
+      background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%);
+      color: #333;
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-size: 0.97rem;
+      font-weight: 500;
+      box-shadow: 0 2px 6px rgba(46,49,49,0.06);
+      margin-bottom: 4px;
+    }
+
+    .contact-form {
+      max-width: 420px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(46,49,49,0.08);
+      padding: 24px;
+    }
+
+    .contact-form label {
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 14px;
+      border: 1.5px solid #eee;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #f7f8fa;
+      transition: border-color 0.2s;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #2b5876;
+      outline: none;
+    }
+
+    .contact-form button {
+      background: linear-gradient(90deg, #2b5876 0%, #4e4376 100%);
+      color: #fff;
+      border: none;
+      padding: 10px 28px;
+      border-radius: 6px;
+      font-size: 1.07rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .contact-form button:hover {
+      background: linear-gradient(90deg, #4e4376 0%, #2b5876 100%);
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 0;
+      color: #aaa;
+      font-size: 0.97rem;
+      background: #f0f0f2;
+      margin-top: 48px;
+    }
+
+    @media (max-width: 700px) {
+      header h1 { font-size: 2rem; }
+      .container { padding: 0 12px; }
+      .about { flex-direction: column; align-items: flex-start; }
+      .about-img { margin-bottom: 16px; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Prakesh's Designer Portfolio</h1>
+    <p>UI/UX Designer & Visual Storyteller</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="about">
+        <div class="about-text">
+          <p>Hello! I'm PRAKESH, a passionate designer focused on crafting beautiful, intuitive digital experiences. With a background in both graphic and interface design, I blend creativity with usability to create designs that not only look great but also work seamlessly.</p>
+          <p>Driven by curiosity and a love for storytelling, I thrive on collaboration and am always looking to push the boundaries of design.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <h2>Portfolio</h2>
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <img class="portfolio-image" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Project 1">
+          <div class="portfolio-content">
+            <span class="portfolio-title">Modern Website Redesign</span>
+            <span class="portfolio-desc">Complete UI overhaul for a tech startup, focusing on clean layouts, accessibility, and engaging visuals.</span>
+            <a href="#" class="portfolio-link">View Project</a>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <img class="portfolio-image" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Project 2">
+          <div class="portfolio-content">
+            <span class="portfolio-title">Mobile App Design</span>
+            <span class="portfolio-desc">Designed a productivity app with a focus on intuitive navigation and delightful micro-interactions.</span>
+            <a href="#" class="portfolio-link">View Project</a>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <img class="portfolio-image" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Project 3">
+          <div class="portfolio-content">
+            <span class="portfolio-title">Branding for E-commerce</span>
+            <span class="portfolio-desc">Developed a vibrant brand identity and design system for an online fashion retailer.</span>
+            <a href="#" class="portfolio-link">View Project</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-list">
+        <span class="skill-tag">UI/UX Design</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">Adobe XD</span>
+        <span class="skill-tag">Photoshop</span>
+        <span class="skill-tag">Illustrator</span>
+        <span class="skill-tag">Wireframing</span>
+        <span class="skill-tag">Prototyping</span>
+        <span class="skill-tag">Branding</span>
+        <span class="skill-tag">Responsive Design</span>
+        <span class="skill-tag">HTML & CSS</span>
+        <span class="skill-tag">Interaction Design</span>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <form class="contact-form" autocomplete="off">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required placeholder="Your Name">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="you@email.com">
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </div>
+
+
+</body>
+</html>
